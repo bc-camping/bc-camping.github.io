@@ -92,9 +92,8 @@
 
     
     // Show loading overlay
-    var loadingOverlay = document.getElementById("campsite-results");
+    var loadingOverlay = document.createElement("div");
     loadingOverlay.classList.add("loading-overlay");
-    loadingOverlay.id = "loading-overlay"; // Set the id for the loading overlay
     var loadingSpinner = document.createElement("div");
     loadingSpinner.classList.add("loading-spinner");
     var loadingText = document.createElement("div");
