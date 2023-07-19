@@ -79,9 +79,7 @@
   </body>
 </html>
 
-<!-- ... (HTML code) ... -->
 
-<!-- Corrected JavaScript code -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     var urlParams = new URLSearchParams(window.location.search);
@@ -98,7 +96,7 @@
 
     // Show loading overlay
     var loadingOverlay = document.createElement("div");
-    loadingOverlay.classList.add("loading-overlay"); // Corrected class name
+    loadingOverlay.classList.add("loading-overlay");
     var loadingSpinner = document.createElement("div");
     loadingSpinner.classList.add("loading-spinner");
     var loadingText = document.createElement("div");
@@ -129,15 +127,52 @@
       .then((data) => {
         var campsiteResults = document.getElementById("campsite-results");
 
-        if (campsiteResults) {
-          // Iterate over the campsite data and create HTML elements
-          for (var i = 0; i < data.length; i++) {
-            // ... (create campsite cards and content as before) ...
-          }
-        }
+        for (var i = 0; i < data.length; i++) {
+          var campsite = data[i];
+          var campsiteName = campsite[0];
+          var campsiteDistance = campsite[1];
 
-        // Remove loading overlay
-        loadingOverlay.remove();
+          // Create a <a> element as a card link
+          var cardLink = document.createElement("a");
+          cardLink.href = "#"; // Replace "#" with the link to the specific campsite details
+
+          // Create a <div> element to wrap the campsite card content
+          var campsiteCard = document.createElement("div");
+          campsiteCard.classList.add("popular__card");
+
+          // Create an <img> element for the campsite image
+          var campsiteImage = document.createElement("img");
+          campsiteImage.src = "assets/hotel-1.jpg"; // Replace with the actual image URL
+          campsiteImage.alt = "popular campsite";
+
+          // Create a <div> element to wrap the campsite content
+          var campsiteContent = document.createElement("div");
+          campsiteContent.classList.add("popular__content");
+
+          // Create a <div> element for the campsite header
+          var campsiteHeader = document.createElement("div");
+          campsiteHeader.classList.add("popular__card__header");
+
+          // Create an <h4> element for the campsite name
+          var campsiteNameElement = document.createElement("h4");
+          campsiteNameElement.textContent = campsiteName;
+
+          // Create a <p> element for the campsite distance
+          var campsiteDistanceElement = document.createElement("p");
+          campsiteDistanceElement.textContent =
+            "Campground Distance: " + campsiteDistance + " minutes away";
+
+          // Assemble the elements
+          campsiteHeader.appendChild(campsiteNameElement);
+          campsiteContent.appendChild(campsiteHeader);
+          campsiteContent.appendChild(campsiteDistanceElement);
+          campsiteCard.appendChild(campsiteImage);
+          campsiteCard.appendChild(campsiteContent);
+          cardLink.appendChild(campsiteCard);
+          campsiteResults.appendChild(cardLink);
+        }
+        // Hide loading overlay
+        loadingOverlay.style.display = "none";
       })
       .catch((error) => {
         // Handle error response
@@ -146,13 +181,14 @@
         // Show error message in loading overlay
         loadingText.textContent = "Error loading data";
 
-        // Remove loading overlay after a delay
+        // Hide loading overlay after a delay
         setTimeout(() => {
-          loadingOverlay.remove();
+          loadingOverlay.style.display = "none";
         }, 2000); // Adjust the delay (in milliseconds) as needed
       });
   });
 </script>
+
 
 
 
