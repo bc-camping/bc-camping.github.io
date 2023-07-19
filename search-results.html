@@ -31,11 +31,10 @@
     </section>
     
 
-    <div class="loading-overlay">
+    <div class="loading-overlay" id="initial-load">
       <div class="loading-image"></div>
       <div class="loading-text">Loading...</div>
     </div>
-    
 
     <footer class="footer">
       <div class="section__container footer__container">
@@ -79,7 +78,9 @@
   </body>
 </html>
 
+<!-- ... (HTML code) ... -->
 
+<!-- Updated JavaScript code -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     var urlParams = new URLSearchParams(window.location.search);
@@ -95,8 +96,9 @@
     };
 
     // Show loading overlay
-    var loadingOverlay = document.createElement("div");
+    var loadingOverlay = getElementById("campsite-results");
     loadingOverlay.classList.add("loading-overlay");
+    loadingOverlay.id = "loading-overlay"; // Set the id for the loading overlay
     var loadingSpinner = document.createElement("div");
     loadingSpinner.classList.add("loading-spinner");
     var loadingText = document.createElement("div");
@@ -113,6 +115,7 @@
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer your-token",
         },
         body: JSON.stringify(requestData),
       }
@@ -126,45 +129,50 @@
       .then((data) => {
         var campsiteResults = document.getElementById("campsite-results");
 
-        for (var i = 0; i < data.length; i++) {
-          var campsite = data[i];
-          var campsiteName = campsite[0];
-          var campsiteDistance = campsite[1];
+        if (campsiteResults) {
+          // Iterate over the campsite data and create HTML elements
+          for (var i = 0; i < data.length; i++) {
+            var campsite = data[i];
+            var campsiteName = campsite[0];
+            var campsiteDistance = campsite[1];
 
-          var cardLink = document.createElement("a");
-          cardLink.href = "#";
+            var cardLink = document.createElement("a");
+            cardLink.href = "#";
 
-          var campsiteCard = document.createElement("div");
-          campsiteCard.classList.add("popular__card");
+            var campsiteCard = document.createElement("div");
+            campsiteCard.classList.add("popular__card");
 
-          var campsiteImage = document.createElement("img");
-          campsiteImage.src = "assets/hotel-1.jpg";
-          campsiteImage.alt = "popular campsite";
+            var campsiteImage = document.createElement("img");
+            campsiteImage.src = "assets/hotel-1.jpg";
+            campsiteImage.alt = "popular campsite";
 
-          var campsiteContent = document.createElement("div");
-          campsiteContent.classList.add("popular__content");
+            var campsiteContent = document.createElement("div");
+            campsiteContent.classList.add("popular__content");
 
-          var campsiteHeader = document.createElement("div");
-          campsiteHeader.classList.add("popular__card__header");
+            var campsiteHeader = document.createElement("div");
+            campsiteHeader.classList.add("popular__card__header");
 
-          var campsiteNameElement = document.createElement("h4");
-          campsiteNameElement.textContent = campsiteName;
+            var campsiteNameElement = document.createElement("h4");
+            campsiteNameElement.textContent = campsiteName;
 
-          var campsiteDistanceElement = document.createElement("p");
-          campsiteDistanceElement.textContent =
-            "Campground Distance: " + campsiteDistance + " minutes away";
+            var campsiteDistanceElement = document.createElement("p");
+            campsiteDistanceElement.textContent =
+              + campsiteDistance + " minutes away";
 
-          campsiteHeader.appendChild(campsiteNameElement);
-          campsiteContent.appendChild(campsiteHeader);
-          campsiteContent.appendChild(campsiteDistanceElement);
-          campsiteCard.appendChild(campsiteImage);
-          campsiteCard.appendChild(campsiteContent);
-          cardLink.appendChild(campsiteCard);
-          campsiteResults.appendChild(cardLink);
+            campsiteHeader.appendChild(campsiteNameElement);
+            campsiteContent.appendChild(campsiteHeader);
+            campsiteContent.appendChild(campsiteDistanceElement);
+            campsiteCard.appendChild(campsiteImage);
+            campsiteCard.appendChild(campsiteContent);
+            cardLink.appendChild(campsiteCard);
+            campsiteResults.appendChild(cardLink);
+          }
+
+        // Remove loading overlay by id
+        var loadingOverlay = document.getElementById("inital-load");
+        if (loadingOverlay) {
+          loadingOverlay.remove();
         }
-
-        // Hide loading overlay
-        loadingOverlay.style.display = "none";
       })
       .catch((error) => {
         // Handle error response
@@ -173,13 +181,17 @@
         // Show error message in loading overlay
         loadingText.textContent = "Error loading data";
 
-        // Hide loading overlay after a delay
+        // Remove loading overlay by id after a delay
         setTimeout(() => {
-          loadingOverlay.style.display = "none";
+          var loadingOverlay = document.getElementById("initial-load");
+          if (loadingOverlay) {
+            loadingOverlay.remove();
+          }
         }, 2000); // Adjust the delay (in milliseconds) as needed
       });
   });
 </script>
+
 
 
 
