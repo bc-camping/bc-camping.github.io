@@ -167,7 +167,7 @@
             cardLink.appendChild(campsiteCard);
             campsiteResults.appendChild(cardLink);
           }
-
+        }
         // Remove loading overlay by id
         var loadingOverlay = document.getElementById("inital-load");
         if (loadingOverlay) {
@@ -182,17 +182,5 @@
         loadingText.textContent = "Error loading data";
 
         // Remove loading overlay by id after a delay
-        setTimeout(() => {
-          var loadingOverlay = document.getElementById("initial-load");
-          if (loadingOverlay) {
-            loadingOverlay.remove();
-          }
-        }, 2000); // Adjust the delay (in milliseconds) as needed
-      });
   });
 </script>
-
-
-
-
-
