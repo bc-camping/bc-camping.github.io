@@ -78,74 +78,102 @@
 
 
 <script>
-  $(document).ready(function() {
+  document.addEventListener("DOMContentLoaded", function () {
     var urlParams = new URLSearchParams(window.location.search);
-    var address = urlParams.get('address');
-    var startDate = urlParams.get('start-date');
-    var endDate = urlParams.get('end-date');
-  
+    var address = urlParams.get("address");
+    var startDate = urlParams.get("start-date");
+    var endDate = urlParams.get("end-date");
+
     // Construct the request payload
     var requestData = {
       address: address,
       start_date: startDate,
-      end_date: endDate
+      end_date: endDate,
     };
-  
-    // Show loading screen
-    var loadingOverlay = $("<div>").addClass("loading-overlay");
-    var loadingText = $("<div>").addClass("loading-text").text("Loading...");
-    loadingOverlay.append(loadingText);
-    $("body").append(loadingOverlay);
-  
+
+    // Show loading overlay
+    var loadingOverlay = document.createElement("div");
+    loadingOverlay.classList.add("loading-overlay");
+    var loadingSpinner = document.createElement("div");
+    loadingSpinner.classList.add("loading-spinner");
+    var loadingText = document.createElement("div");
+    loadingText.classList.add("loading-text");
+    loadingText.textContent = "Loading...";
+    loadingOverlay.appendChild(loadingSpinner);
+    loadingOverlay.appendChild(loadingText);
+    document.body.appendChild(loadingOverlay);
+
     // Make the API call with POST method and headers
-    $.ajax({
-      url: "https://bc-camping.azurewebsites.net/api/backend1?code=7DOL_9TvoDAdNGqBUAoizSb-TgWpUtTJcBn_a65rGdayAzFuum601A==",
-      type: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer your-token"
-      },
-      data: JSON.stringify(requestData),
-      success: function(data) {
-        var popularContainer = $(".popular__grid"); // Get the container for popular cards
-  
+    fetch(
+      "https://bc-camping.azurewebsites.net/api/backend1?code=7DOL_9TvoDAdNGqBUAoizSb-TgWpUtTJcBn_a65rGdayAzFuum601A==",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer your-token",
+        },
+        body: JSON.stringify(requestData),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        var campsiteResults = document.getElementById("campsite-results");
+
         // Iterate over the campsite data and create HTML elements
         for (var i = 0; i < data.length; i++) {
           var campsite = data[i];
           var campsiteName = campsite[0];
           var campsiteDistance = campsite[1];
-          var campsiteImage = campsite[2]; // Assuming the API also provides an image URL for each campsite
-  
-          // Create the 'popular__card' element
-          var popularCard = $("<div>").addClass("popular__card");
-          var cardImage = $("<img>").attr("src", campsiteImage).attr("alt", "popular hotel");
-          var cardContent = $("<div>").addClass("popular__content");
-          var cardHeader = $("<div>").addClass("popular__card__header");
-          var headerTitle = $("<h4>").text(campsiteName);
-          var headerDistance = $("<p>").text("Campground Distance: " + campsiteDistance + " minutes away");
-  
-          // Append the elements to the 'popular__card'
-          cardHeader.append(headerTitle);
-          cardContent.append(cardHeader);
-          cardContent.append(headerDistance);
-          popularCard.append(cardImage);
-          popularCard.append(cardContent);
-  
-          // Append the 'popular__card' to the container
-          popularContainer.append(popularCard);
+
+          // Create a <a> element as a card link
+          var cardLink = document.createElement("a");
+          cardLink.href = "#"; // Replace "#" with the link to the specific campsite details
+
+          // Create a <div> element to wrap the campsite card content
+          var campsiteCard = document.createElement("div");
+          campsiteCard.classList.add("popular__card");
+
+          // Create an <img> element for the campsite image
+          var campsiteImage = document.createElement("img");
+          campsiteImage.src = "assets/hotel-1.jpg"; // Replace with the actual image URL
+          campsiteImage.alt = "popular campsite";
+
+          // Create a <div> element to wrap the campsite content
+          var campsiteContent = document.createElement("div");
+          campsiteContent.classList.add("popular__content");
+
+          // Create a <div> element for the campsite header
+          var campsiteHeader = document.createElement("div");
+          campsiteHeader.classList.add("popular__card__header");
+
+          // Create an <h4> element for the campsite name
+          var campsiteNameElement = document.createElement("h4");
+          campsiteNameElement.textContent = campsiteName;
+
+          // Create a <p> element for the campsite distance
+          var campsiteDistanceElement = document.createElement("p");
+          campsiteDistanceElement.textContent =
+            campsiteDistance + " minutes away";
+
+          // Assemble the elements
+          campsiteHeader.appendChild(campsiteNameElement);
+          campsiteContent.appendChild(campsiteHeader);
+          campsiteContent.appendChild(campsiteDistanceElement);
+          campsiteCard.appendChild(campsiteImage);
+          campsiteCard.appendChild(campsiteContent);
+          cardLink.appendChild(campsiteCard);
+          campsiteResults.appendChild(cardLink);
         }
-  
-        // Hide loading screen
+
+        // Remove loading overlay
         loadingOverlay.remove();
-      },
-      error: function(xhr, status, error) {
+      })
+      .catch((error) => {
         // Handle error response
         console.error(error);
-  
-        // Hide loading screen
+
+        // Remove loading overlay
         loadingOverlay.remove();
-      }
-    });
+      });
   });
-  </script>
-  
+</script>

@@ -472,7 +472,7 @@ select:-webkit-autofill:focus {
 .loading-image {
   width: 60px;
   height: 60px;
-  background-image: url('loading.gif');
+  background-image: url('assets/loading.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
