@@ -128,8 +128,44 @@
             var campsiteName = campsite[0];
             var campsiteDistance = campsite[1];
 
-            // ... (same code as before) ...
+            // Create a link element to represent the campsite card
+            var cardLink = document.createElement("a");
+            cardLink.href = "https://bcparks.ca/"; // Replace "#" with the appropriate link for each campsite
 
+            // Create the campsite card container
+            var campsiteCard = document.createElement("div");
+            campsiteCard.classList.add("popular__card");
+
+            // Create the image element
+            var campsiteImage = document.createElement("img");
+            campsiteImage.src = "assets/hotel-1.jpg"; // Replace with the appropriate image URL
+
+            // Create the campsite content container
+            var campsiteContent = document.createElement("div");
+            campsiteContent.classList.add("popular__content");
+
+            // Create the campsite header container
+            var campsiteHeader = document.createElement("div");
+            campsiteHeader.classList.add("popular__card__header");
+
+            // Create the campsite name heading
+            var campsiteNameHeading = document.createElement("h4");
+            campsiteNameHeading.textContent = campsiteName;
+
+            // ... (similarly create other elements as needed) ...
+
+            // Append elements to their respective containers
+            campsiteHeader.appendChild(campsiteNameHeading);
+            campsiteContent.appendChild(campsiteHeader);
+            // ... (append other content elements as needed) ...
+
+            campsiteCard.appendChild(campsiteImage);
+            campsiteCard.appendChild(campsiteContent);
+
+            // Append the campsite card to the link
+            cardLink.appendChild(campsiteCard);
+
+            // Append the link to the campsite results container
             campsiteResults.appendChild(cardLink);
           }
         }
@@ -146,4 +182,5 @@
       });
   });
 </script>
+
 
