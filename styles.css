@@ -477,10 +477,10 @@ select:-webkit-autofill:focus {
 }
 
 @keyframes spin {
-  Apologies for the oversight. Let's focus on the vertical alignment issue. We can adjust the flex properties to achieve the desired layout. Here's the updated CSS file:
-  
-  css
-  Copy code
-  /* Your existing CSS styles (up to .booking__container) */
-  
- 
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
