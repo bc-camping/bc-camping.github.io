@@ -113,7 +113,6 @@
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer your-token",
         },
         body: JSON.stringify(requestData),
       }
@@ -132,37 +131,29 @@
           var campsiteName = campsite[0];
           var campsiteDistance = campsite[1];
 
-          // Create a <a> element as a card link
           var cardLink = document.createElement("a");
-          cardLink.href = "#"; // Replace "#" with the link to the specific campsite details
+          cardLink.href = "#";
 
-          // Create a <div> element to wrap the campsite card content
           var campsiteCard = document.createElement("div");
           campsiteCard.classList.add("popular__card");
 
-          // Create an <img> element for the campsite image
           var campsiteImage = document.createElement("img");
-          campsiteImage.src = "assets/hotel-1.jpg"; // Replace with the actual image URL
+          campsiteImage.src = "assets/hotel-1.jpg";
           campsiteImage.alt = "popular campsite";
 
-          // Create a <div> element to wrap the campsite content
           var campsiteContent = document.createElement("div");
           campsiteContent.classList.add("popular__content");
 
-          // Create a <div> element for the campsite header
           var campsiteHeader = document.createElement("div");
           campsiteHeader.classList.add("popular__card__header");
 
-          // Create an <h4> element for the campsite name
           var campsiteNameElement = document.createElement("h4");
           campsiteNameElement.textContent = campsiteName;
 
-          // Create a <p> element for the campsite distance
           var campsiteDistanceElement = document.createElement("p");
           campsiteDistanceElement.textContent =
             "Campground Distance: " + campsiteDistance + " minutes away";
 
-          // Assemble the elements
           campsiteHeader.appendChild(campsiteNameElement);
           campsiteContent.appendChild(campsiteHeader);
           campsiteContent.appendChild(campsiteDistanceElement);
@@ -171,8 +162,9 @@
           cardLink.appendChild(campsiteCard);
           campsiteResults.appendChild(cardLink);
         }
+
         // Hide loading overlay
-        loadingOverlay.style.display = "none !important";
+        loadingOverlay.style.display = "none";
       })
       .catch((error) => {
         // Handle error response
@@ -188,7 +180,6 @@
       });
   });
 </script>
-
 
 
 
