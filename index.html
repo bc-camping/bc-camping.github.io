@@ -177,3 +177,78 @@
     </footer>
   </body>
 </html>
+
+
+
+<script>
+  $(document).ready(function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var address = urlParams.get('address');
+    var startDate = urlParams.get('start-date');
+    var endDate = urlParams.get('end-date');
+  
+    // Construct the request payload
+    var requestData = {
+      address: address,
+      start_date: startDate,
+      end_date: endDate
+    };
+  
+    // Show loading screen
+    var loadingOverlay = $("<div>").addClass("loading-overlay");
+    var loadingText = $("<div>").addClass("loading-text").text("Loading...");
+    loadingOverlay.append(loadingText);
+    $("body").append(loadingOverlay);
+  
+    // Make the API call with POST method and headers
+    $.ajax({
+      url: "https://bc-camping.azurewebsites.net/api/backend1?code=7DOL_9TvoDAdNGqBUAoizSb-TgWpUtTJcBn_a65rGdayAzFuum601A==",
+      type: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer your-token"
+      },
+      data: JSON.stringify(requestData),
+      success: function(data) {
+        var popularContainer = $(".popular__grid"); // Get the container for popular cards
+  
+        // Iterate over the campsite data and create HTML elements
+        for (var i = 0; i < data.length; i++) {
+          var campsite = data[i];
+          var campsiteName = campsite[0];
+          var campsiteDistance = campsite[1];
+          var campsiteImage = campsite[2]; // Assuming the API also provides an image URL for each campsite
+  
+          // Create the 'popular__card' element
+          var popularCard = $("<div>").addClass("popular__card");
+          var cardImage = $("<img>").attr("src", campsiteImage).attr("alt", "popular hotel");
+          var cardContent = $("<div>").addClass("popular__content");
+          var cardHeader = $("<div>").addClass("popular__card__header");
+          var headerTitle = $("<h4>").text(campsiteName);
+          var headerDistance = $("<p>").text("Campground Distance: " + campsiteDistance + " minutes away");
+  
+          // Append the elements to the 'popular__card'
+          cardHeader.append(headerTitle);
+          cardContent.append(cardHeader);
+          cardContent.append(headerDistance);
+          popularCard.append(cardImage);
+          popularCard.append(cardContent);
+  
+          // Append the 'popular__card' to the container
+          popularContainer.append(popularCard);
+        }
+  
+        // Hide loading screen
+        loadingOverlay.remove();
+      },
+      error: function(xhr, status, error) {
+        // Handle error response
+        console.error(error);
+  
+        // Hide loading screen
+        loadingOverlay.remove();
+      }
+    });
+  });
+  </script>
+  
