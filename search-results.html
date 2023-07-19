@@ -90,7 +90,7 @@
       end_date: endDate,
     };
 
-    /*
+    
     // Show loading overlay
     var loadingOverlay = document.getElementById("campsite-results");
     loadingOverlay.classList.add("loading-overlay");
@@ -103,7 +103,7 @@
     loadingOverlay.appendChild(loadingSpinner);
     loadingOverlay.appendChild(loadingText);
     document.body.appendChild(loadingOverlay);
-    */
+    
 
     // Make the API call with POST method and headers
     fetch(
@@ -164,14 +164,14 @@
             campsiteResults.appendChild(cardLink);
           }
         }
-        /*
+        
         console.log("got here");
         // Remove loading overlay by id
         var loadingOverlay = document.getElementById("inital-load");
         if (loadingOverlay) {
           loadingOverlay.remove();
         }
-        */
+        
       })
       .catch((error) => {
         // Handle error response
@@ -179,6 +179,7 @@
 
         // Show error message in loading overlay
         loadingText.textContent = "Error loading data";
+        loadingOverlay.remove();
 
       });
   });
