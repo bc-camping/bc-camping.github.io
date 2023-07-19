@@ -78,9 +78,7 @@
   </body>
 </html>
 
-<!-- ... (HTML code) ... -->
 
-<!-- Updated JavaScript code -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     var urlParams = new URLSearchParams(window.location.search);
@@ -95,6 +93,7 @@
       end_date: endDate,
     };
 
+    /*
     // Show loading overlay
     var loadingOverlay = document.getElementById("campsite-results");
     loadingOverlay.classList.add("loading-overlay");
@@ -107,6 +106,7 @@
     loadingOverlay.appendChild(loadingSpinner);
     loadingOverlay.appendChild(loadingText);
     document.body.appendChild(loadingOverlay);
+    */
 
     // Make the API call with POST method and headers
     fetch(
@@ -115,7 +115,6 @@
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer your-token",
         },
         body: JSON.stringify(requestData),
       }
@@ -168,12 +167,14 @@
             campsiteResults.appendChild(cardLink);
           }
         }
+        /*
         console.log("got here");
         // Remove loading overlay by id
         var loadingOverlay = document.getElementById("inital-load");
         if (loadingOverlay) {
           loadingOverlay.remove();
         }
+        */
       })
       .catch((error) => {
         // Handle error response
