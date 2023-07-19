@@ -156,6 +156,7 @@ nav {
 .booking__container input {
   width: 100%;
   padding: 10px 0;
+  height: 48px;
   font-size: 1rem;
   outline: none;
   border: none;
@@ -176,9 +177,11 @@ nav {
   color: var(--text-light);
 }
 
-
-
-
+.booking__container .form__group p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
 
 .booking__container .btn {
   padding: 1rem;
@@ -357,7 +360,7 @@ nav {
   background-color: var(--text-light);
 }
 
-@media (width < 900px) {
+@media (max-width: 900px) {
   .booking__container form {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -377,7 +380,7 @@ nav {
   }
 }
 
-@media (width < 600px) {
+@media (max-width: 600px) {
   .nav__links {
     display: none;
   }
@@ -408,10 +411,9 @@ nav {
   }
 }
 
-
 .button-wrapper {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 0rem;
 }
 
 .button-wrapper button {
@@ -446,7 +448,6 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--text-dark) !important;
 }
 
-
 .loading-overlay {
   position: fixed;
   top: 0;
@@ -476,10 +477,10 @@ select:-webkit-autofill:focus {
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+  Apologies for the oversight. Let's focus on the vertical alignment issue. We can adjust the flex properties to achieve the desired layout. Here's the updated CSS file:
+  
+  css
+  Copy code
+  /* Your existing CSS styles (up to .booking__container) */
+  
+ 

@@ -12,51 +12,51 @@
   </head>
   <body>
     <nav>
-      <div class="nav__logo">BC Camping</div>
+      <div class="nav__logo"><a href="/"></li>BC Camping</div>
       <ul class="nav__links">
-        <li class="link"><a href="#">Home</a></li>
-        <li class="link"><a href="#">Book</a></li>
-        <li class="link"><a href="#">Blog</a></li>
-        <li class="link"><a href="#">Contact Us</a></li>
+        <li class="link"><a href="/">Home</a></li>
+        <li class="link"><a href="https://www.github.com/j1mmr">Blog</a></li>
+        <li class="link"><a href="https://www.twitter.com/j1mmr">Contact Us</a></li>
       </ul>
     </nav>
     <header class="section__container header__container">
       <div class="header__image__container">
         <div class="header__content">
-          <h1>Find Your New Favourite Campground</h1>
+          <h1>Find Your New Favourite Camping Spot</h1>
           <p>Search the BC campground reservation service in a new way...</p>
         </div>
-        <!-- ...Previous code... -->
+       <!-- ... (your existing HTML code) ... -->
 
-        <div class="booking__container">
-          <form action="/search-results.html" method="GET">
-            <div class="form__group">
-              <div class="input__group">
-                <input type="text" id="location" name="address" required>
-                <label for="location">Location</label>
-              </div>
-              <p>Where are you starting from?</p>
+       <div class="booking__container">
+        <form action="/search-results.html" method="GET">
+          <div class="form__group">
+            <div class="input__group">
+              <input type="text" id="location" name="address" required>
+              <label for="location">Location</label>
             </div>
-            <div class="form__group">
-              <div class="input__group">
-                <input type="date" id="check-in" name="start-date" required>
-                <label for="check-in">Check In</label>
-              </div>
-              <p>Add date</p>
+            <p>Where are you starting from?</p>
+          </div>
+          <div class="form__group">
+            <div class="input__group date-input">
+              <input type="date" id="check-in" name="start-date" required>
+              <label for="check-in">Check In</label>
             </div>
-            <div class="form__group">
-              <div class="input__group">
-                <input type="date" id="check-out" name="end-date" required>
-                <label for="check-out">Check Out</label>
-              </div>
-              <p>Add date</p>
+            <p>Add date</p>
+          </div>
+          <div class="form__group">
+            <div class="input__group date-input">
+              <input type="date" id="check-out" name="end-date" required>
+              <label for="check-out">Check Out</label>
             </div>
-            <div class="button-wrapper">
-              <button type="submit">Search</button>
-            </div>
-          </form>
-        </div>
+            <p>Add date</p>
+          </div>
+          <div class="button-wrapper">
+            <button type="submit">Search</button>
+          </div>
+        </form>
       </div>
+        <!-- ... (your existing HTML code) ... -->
+
     </header>
 
 
@@ -72,15 +72,9 @@
     <footer class="footer">
       <div class="section__container footer__container">
         <div class="footer__col">
-          <h3>WDM&Co</h3>
+          <h3>BC Camping</h3>
           <p>
-            WDM&Co is a premier hotel booking website that offers a seamless and
-            convenient way to find and book accommodations worldwide.
-          </p>
-          <p>
-            With a user-friendly interface and a vast selection of hotels,
-            WDM&Co aims to provide a stress-free experience for travelers
-            seeking the perfect stay.
+            This website was created as a way to find local camp sites in BC. It checks the status of all reservable campgrounds in BC parks and sorts them by distance from your location.
           </p>
         </div>
         <div class="footer__col">
@@ -91,18 +85,7 @@
           <p>Book</p>
           <p>Contact Us</p>
         </div>
-        <div class="footer__col">
-          <h4>Legal</h4>
-          <p>FAQs</p>
-          <p>Terms & Conditions</p>
-          <p>Privacy Policy</p>
-        </div>
-        <div class="footer__col">
-          <h4>Resources</h4>
-          <p>Social Media</p>
-          <p>Help Center</p>
-          <p>Partnerships</p>
-        </div>
+
       </div>
       <div class="footer__bar">
         Copyright © 2023 Web Design Mastery. All rights reserved.
