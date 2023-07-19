@@ -25,8 +25,11 @@
 
     <section class="section__container popular__container">
       <h2 class="section__header">Available Campgrounds</h2>
-      <div class="popular__grid"></div>
+      <div class="popular__grid" id="campsite-results">
+        <!-- Campsite cards will be dynamically appended here -->
+      </div>
     </section>
+    
 
     <div class="loading-overlay">
       <div class="loading-image"></div>
@@ -76,7 +79,6 @@
   </body>
 </html>
 
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     var urlParams = new URLSearchParams(window.location.search);
@@ -119,50 +121,17 @@
       .then((data) => {
         var campsiteResults = document.getElementById("campsite-results");
 
-        // Iterate over the campsite data and create HTML elements
-        for (var i = 0; i < data.length; i++) {
-          var campsite = data[i];
-          var campsiteName = campsite[0];
-          var campsiteDistance = campsite[1];
+        if (campsiteResults) {
+          // Iterate over the campsite data and create HTML elements
+          for (var i = 0; i < data.length; i++) {
+            var campsite = data[i];
+            var campsiteName = campsite[0];
+            var campsiteDistance = campsite[1];
 
-          // Create a <a> element as a card link
-          var cardLink = document.createElement("a");
-          cardLink.href = "#"; // Replace "#" with the link to the specific campsite details
+            // ... (same code as before) ...
 
-          // Create a <div> element to wrap the campsite card content
-          var campsiteCard = document.createElement("div");
-          campsiteCard.classList.add("popular__card");
-
-          // Create an <img> element for the campsite image
-          var campsiteImage = document.createElement("img");
-          campsiteImage.src = "assets/hotel-1.jpg"; // Replace with the actual image URL
-          campsiteImage.alt = "popular campsite";
-
-          // Create a <div> element to wrap the campsite content
-          var campsiteContent = document.createElement("div");
-          campsiteContent.classList.add("popular__content");
-
-          // Create a <div> element for the campsite header
-          var campsiteHeader = document.createElement("div");
-          campsiteHeader.classList.add("popular__card__header");
-
-          // Create an <h4> element for the campsite name
-          var campsiteNameElement = document.createElement("h4");
-          campsiteNameElement.textContent = campsiteName;
-
-          // Create a <p> element for the campsite distance
-          var campsiteDistanceElement = document.createElement("p");
-          campsiteDistanceElement.textContent =
-            campsiteDistance + " minutes away";
-
-          // Assemble the elements
-          campsiteHeader.appendChild(campsiteNameElement);
-          campsiteContent.appendChild(campsiteHeader);
-          campsiteContent.appendChild(campsiteDistanceElement);
-          campsiteCard.appendChild(campsiteImage);
-          campsiteCard.appendChild(campsiteContent);
-          cardLink.appendChild(campsiteCard);
-          campsiteResults.appendChild(cardLink);
+            campsiteResults.appendChild(cardLink);
+          }
         }
 
         // Remove loading overlay
@@ -177,3 +146,4 @@
       });
   });
 </script>
+
