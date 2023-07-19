@@ -468,11 +468,21 @@ select:-webkit-autofill:focus {
   margin-left: 1rem;
 }
 
-/* Add the appropriate path to your loading.gif image */
-.loading-image {
-  width: 60px;
-  height: 60px;
-  background-image: url('assets/loading.gif');
-  background-repeat: no-repeat;
-  background-size: contain;
+.loading-spinner {
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top: 5px solid var(--primary-color); /* Use your primary color for the spinner */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* Add a spinning animation */
 }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
