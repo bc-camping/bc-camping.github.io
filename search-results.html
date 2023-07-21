@@ -123,6 +123,8 @@
             var campsiteImage = document.createElement("img");
             campsiteImage.src = campsite['image'];
             campsiteImage.alt = campsiteName;
+            campsiteImage.classList.add("campsite-image"); // Add this line to add the class
+
 
             var campsiteContent = document.createElement("div");
             campsiteContent.classList.add("popular__content");

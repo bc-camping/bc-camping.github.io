@@ -432,6 +432,16 @@ nav {
   background-color: var(--primary-color-dark);
 }
 
+
+/* Add this rule to set a fixed size for the campsite images */
+.campsite-image {
+  width: 200px; /* You can adjust the width as per your requirement */
+  height: 150px; /* You can adjust the height as per your requirement */
+  object-fit: cover; /* This ensures the image fills the container without distorting its aspect ratio */
+}
+
+
+
 /* Your existing CSS styles */
 
 /* Updated CSS for disabling autofill highlighting */
