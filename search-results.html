@@ -111,18 +111,18 @@
           // Iterate over the campsite data and create HTML elements
           for (var i = 0; i < data.length; i++) {
             var campsite = data[i];
-            var campsiteName = campsite[0];
-            var campsiteDistance = campsite[1];
+            var campsiteName = campsite['name'];
+            var campsiteDistance = campsite['distance'];
 
             var cardLink = document.createElement("a");
-            cardLink.href = "https://www.bcparks.ca";
+            cardLink.href = campsite['link'];
 
             var campsiteCard = document.createElement("div");
             campsiteCard.classList.add("popular__card");
 
             var campsiteImage = document.createElement("img");
-            campsiteImage.src = "assets/hotel-1.jpg";
-            campsiteImage.alt = "popular campsite";
+            campsiteImage.src = campsite['image'];
+            campsiteImage.alt = campsiteName;
 
             var campsiteContent = document.createElement("div");
             campsiteContent.classList.add("popular__content");
@@ -135,7 +135,7 @@
 
             var campsiteDistanceElement = document.createElement("p");
             campsiteDistanceElement.textContent =
-              + campsiteDistance + " minutes away";
+              campsiteDistance + " minutes away";
 
             campsiteHeader.appendChild(campsiteNameElement);
             campsiteContent.appendChild(campsiteHeader);
