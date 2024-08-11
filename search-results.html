@@ -117,17 +117,13 @@
         if (campsiteResults) {
           // Iterate over the campsite data and create HTML elements
           for (var i = 0; i < data.length; i++) {
-            var campsite = data[i];
-            var campsiteName = campsite['name'];
-            var campsiteDistance = campsite['distance'];
+            var campsiteName = data[i][0];
+            var campsiteDistance = data[i][1];
 
             var cardLink = document.createElement("a");
-            cardLink.href = campsite['link'];
 
             var campsiteCard = document.createElement("div");
             campsiteCard.classList.add("popular__card");
-
-
 
 
             var campsiteContent = document.createElement("div");
