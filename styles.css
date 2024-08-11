@@ -248,20 +248,10 @@ nav {
     gap: 2rem;
 }
 
-.results__card {
-    overflow: hidden;
-    border-radius: 1rem;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.results__content {
-    padding: 1rem;
-}
-
 .results__card__header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 1rem;
     margin-bottom: 0.5rem;
 }
@@ -270,12 +260,23 @@ nav {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-dark);
+    margin: 0;
 }
 
-.results__content p {
-    color: var(--text-light);
+.results__card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
+.results__content {
+    flex: 1;
+    padding: 1rem;
+}
+
+.results__card__header {
+    flex-shrink: 0;
+}
 .footer {
     background-color: var(--extra-light);
 }
