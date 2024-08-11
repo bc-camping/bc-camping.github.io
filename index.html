@@ -26,14 +26,172 @@
           <h1>Find Your New Favourite Camping Spot</h1>
           <p>Search the BC campground reservation service in a new way...</p>
         </div>
-       <!-- ... (your existing HTML code) ... -->
-
        <div class="booking__container">
         <form action="/search-results.html" method="GET">
           <div class="form__group">
             <div class="input__group">
-              <input type="text" id="location" name="address" required>
-              <label for="location">Location</label>
+              <input list="cities" id="city" name="city" required>
+              <datalist id="cities">
+                  <option value="Abbotsford">
+                  <option value="Alert Bay">
+                  <option value="Anmore">
+                  <option value="Armstrong">
+                  <option value="Ashcroft">
+                  <option value="Barriere">
+                  <option value="Belcarra">
+                  <option value="Bowen Island">
+                  <option value="Burnaby">
+                  <option value="Burns Lake">
+                  <option value="Cache Creek">
+                  <option value="Campbell River">
+                  <option value="Canal Flats">
+                  <option value="Castlegar">
+                  <option value="Central Saanich">
+                  <option value="Chase">
+                  <option value="Chetwynd">
+                  <option value="Chilliwack">
+                  <option value="Clearwater">
+                  <option value="Clinton">
+                  <option value="Coldstream,Colwood">
+                  <option value="Comox">
+                  <option value="Coquitlam">
+                  <option value="Courtenay">
+                  <option value="Cranbrook">
+                  <option value="Creston">
+                  <option value="Cumberland">
+                  <option value="Daajing Giids">
+                  <option value="Dawson Creek">
+                  <option value="Delta">
+                  <option value="Duncan">
+                  <option value="Elkford">
+                  <option value="Enderby">
+                  <option value="Esquimalt">
+                  <option value="Fernie">
+                  <option value="Fort St. James">
+                  <option value="Fort St. John">
+                  <option value="Fraser Lake">
+                  <option value="Fruitvale">
+                  <option value="Gibsons">
+                  <option value="Gold River">
+                  <option value="Golden">
+                  <option value="Grand Forks">
+                  <option value="Granisle">
+                  <option value="Greenwood">
+                  <option value="Harrison Hot Springs">
+                  <option value="Hazelton">
+                  <option value="Highlands">
+                  <option value="Hope">
+                  <option value="Houston">
+                  <option value="Hudson's Hope">
+                  <option value="Invermere">
+                  <option value="Kamloops">
+                  <option value="Kaslo">
+                  <option value="Kelowna">
+                  <option value="Kent">
+                  <option value="Keremeos">
+                  <option value="Kimberley">
+                  <option value="Kitimat">
+                  <option value="Ladysmith">
+                  <option value="Lake Country">
+                  <option value="Lake Cowichan">
+                  <option value="Langford">
+                  <option value="Langley">
+                  <option value="Lantzville">
+                  <option value="Lillooet">
+                  <option value="Lions Bay">
+                  <option value="Logan Lake">
+                  <option value="Lumby">
+                  <option value="Lytton">
+                  <option value="Mackenzie">
+                  <option value="Maple Ridge">
+                  <option value="Masset">
+                  <option value="McBride">
+                  <option value="Merritt">
+                  <option value="Metchosin">
+                  <option value="Midway">
+                  <option value="Mission">
+                  <option value="Montrose">
+                  <option value="Nakusp">
+                  <option value="Nanaimo">
+                  <option value="Nelson">
+                  <option value="New Denver">
+                  <option value="New Hazelton">
+                  <option value="New Westminster">
+                  <option value="North Cowichan">
+                  <option value="North Saanich">
+                  <option value="North Vancouver">
+                  <option value="Northern Rockies">
+                  <option value="Oak Bay">
+                  <option value="Oliver">
+                  <option value="One Hundred Mile House">
+                  <option value="Osoyoos">
+                  <option value="Parksville">
+                  <option value="Peachland">
+                  <option value="Pemberton">
+                  <option value="Penticton">
+                  <option value="Pitt Meadows">
+                  <option value="Port Alberni">
+                  <option value="Port Alice">
+                  <option value="Port Clements">
+                  <option value="Port Coquitlam">
+                  <option value="Port Edward">
+                  <option value="Port Hardy">
+                  <option value="Port McNeill">
+                  <option value="Port Moody">
+                  <option value="Pouce Coupe">
+                  <option value="Powell River">
+                  <option value="Prince George">
+                  <option value="Prince Rupert">
+                  <option value="Princeton">
+                  <option value="Qualicum Beach">
+                  <option value="Quesnel">
+                  <option value="Radium Hot Springs">
+                  <option value="Revelstoke">
+                  <option value="Richmond">
+                  <option value="Rossland">
+                  <option value="Saanich">
+                  <option value="Salmo">
+                  <option value="Salmon Arm">
+                  <option value="Sayward">
+                  <option value="Sechelt">
+                  <option value="shíshálh Nation">
+                  <option value="Sicamous">
+                  <option value="Sidney">
+                  <option value="Silverton">
+                  <option value="Slocan">
+                  <option value="Smithers">
+                  <option value="Sooke">
+                  <option value="SpallumcheenSparwood">
+                  <option value="Squamish">
+                  <option value="Stewart">
+                  <option value="Summerland">
+                  <option value="Sun Peaks Mountain">
+                  <option value="Surrey">
+                  <option value="Tahsis">
+                  <option value="Taylor">
+                  <option value="Telkwa">
+                  <option value="Terrace">
+                  <option value="Tofino">
+                  <option value="Trail">
+                  <option value="Tumbler Ridge">
+                  <option value="Ucluelet">
+                  <option value="Valemount">
+                  <option value="Vancouver">
+                  <option value="Vanderhoof">
+                  <option value="Vernon">
+                  <option value="Victoria">
+                  <option value="View Royal">
+                  <option value="Warfield">
+                  <option value="Wells">
+                  <option value="West Kelowna">
+                  <option value="West Vancouver">
+                  <option value="Whistler">
+                  <option value="White Rock">
+                  <option value="Williams Lake">
+                  <option value="Zeballos">
+
+              </datalist>
+              <label for="city">City</label>
             </div>
             <p>Where are you starting from?</p>
           </div>
@@ -56,11 +214,7 @@
           </div>
         </form>
       </div>
-        <!-- ... (your existing HTML code) ... -->
-
     </header>
-
-
 
     <section class="section__container">
       <div class="reward__container">
@@ -96,5 +250,3 @@
     </footer>
   </body>
 </html>
-
-

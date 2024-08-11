@@ -30,7 +30,7 @@
         <!-- Campsite cards will be dynamically appended here -->
       </div>
     </section>
-    
+
 
 
 
@@ -65,6 +65,10 @@
 <script>
 
   function convertMinutesToHoursAndMinutes(minutes) {
+    // check to see if minutes == null -> text should be greater "No direct road access"
+    if (minute == null){
+      return "Driving directions couldn't be calculated."
+    }
     var hours = Math.floor(minutes / 60);
     var remainingMinutes = minutes % 60;
     return hours > 0
@@ -80,13 +84,13 @@
     var endDate = urlParams.get("end-date");
 
     // Construct the request payload
-    var requestData = {
-      address: address,
+    const url_params = new URLSearchParams({
+      city: city,
       start_date: startDate,
       end_date: endDate,
-    };
+      });
 
-    
+
     // Show loading overlay
     var loadingOverlay = document.createElement("div");
     loadingOverlay.id = "inital-load";
@@ -99,25 +103,14 @@
     loadingOverlay.appendChild(loadingSpinner);
     loadingOverlay.appendChild(loadingText);
     document.body.appendChild(loadingOverlay);
-    
+
+    const api_url = `https://bc-camping-v3.azurewebsites.net/api/get_campsites?${url_params}`;
 
     // Make the API call with POST method and headers
     fetch(
-      "https://bc-camping.azurewebsites.net/api/backend1?code=7DOL_9TvoDAdNGqBUAoizSb-TgWpUtTJcBn_a65rGdayAzFuum601A==",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestData),
-      }
+      "https://bc-camping-v3.azurewebsites.net/api/get_campsites?city=Nelson&start-date=2024-09-03&end-date=2024-09-07",
     )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
+      .then(response => response.json())
       .then((data) => {
         var campsiteResults = document.getElementById("campsite-results");
 
@@ -134,9 +127,6 @@
             var campsiteCard = document.createElement("div");
             campsiteCard.classList.add("popular__card");
 
-            var campsiteImage = document.createElement("img");
-            campsiteImage.src = campsite['image'];
-            campsiteImage.alt = campsiteName;
 
 
 
@@ -156,20 +146,19 @@
             campsiteHeader.appendChild(campsiteNameElement);
             campsiteContent.appendChild(campsiteHeader);
             campsiteContent.appendChild(campsiteDistanceElement);
-            campsiteCard.appendChild(campsiteImage);
             campsiteCard.appendChild(campsiteContent);
             cardLink.appendChild(campsiteCard);
             campsiteResults.appendChild(cardLink);
           }
         }
-        
+
         console.log("got here");
         // Remove loading overlay by id
         var loadingOverlay = document.getElementById("inital-load");
         if (loadingOverlay) {
           loadingOverlay.remove();
         }
-        
+
       })
       .catch((error) => {
         // Handle error response
