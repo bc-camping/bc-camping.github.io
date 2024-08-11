@@ -108,7 +108,7 @@
 
     // Make the API call with POST method and headers
     fetch(
-      "https://bc-camping-v3.azurewebsites.net/api/get_campsites?city=Nelson&start-date=2024-09-03&end-date=2024-09-07",
+      api_url,
     )
       .then(response => response.json())
       .then((data) => {
