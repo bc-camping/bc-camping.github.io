@@ -24,9 +24,9 @@
     </nav>
     </header>
 
-    <section class="section__container popular__container">
+    <section class="section__container results__container">
       <h2 class="section__header">Available Campgrounds</h2>
-      <div class="popular__grid" id="campsite-results">
+      <div class="results__grid" id="campsite-results">
         <!-- Campsite cards will be dynamically appended here -->
       </div>
     </section>
@@ -123,14 +123,14 @@
             var cardLink = document.createElement("a");
 
             var campsiteCard = document.createElement("div");
-            campsiteCard.classList.add("popular__card");
+            campsiteCard.classList.add("results__card");
 
 
             var campsiteContent = document.createElement("div");
-            campsiteContent.classList.add("popular__content");
+            campsiteContent.classList.add("results__content");
 
             var campsiteHeader = document.createElement("div");
-            campsiteHeader.classList.add("popular__card__header");
+            campsiteHeader.classList.add("results__card__header");
 
             var campsiteNameElement = document.createElement("h4");
             campsiteNameElement.textContent = campsiteName;
@@ -148,7 +148,6 @@
           }
         }
 
-        console.log("got here");
         // Remove loading overlay by id
         var loadingOverlay = document.getElementById("inital-load");
         if (loadingOverlay) {

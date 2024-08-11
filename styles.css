@@ -110,6 +110,8 @@ nav {
     color: var(--extra-light);
 }
 
+/* CSS for main page */
+
 .booking__container {
     position: absolute;
     bottom: -5rem;
@@ -199,88 +201,20 @@ nav {
     background-color: var(--primary-color-dark);
 }
 
-.popular__grid {
-    margin-top: 4rem;
-    display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(300px, 1fr)
-    ); /* Updated grid layout */
-    gap: 2rem;
-}
-
-.popular__card {
-    overflow: hidden;
-    border-radius: 1rem;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.popular__content {
-    padding: 1rem;
-}
-
-.popular__card__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.popular__card__header h4 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.popular__content p {
-    color: var(--text-light);
-}
-
-.client {
-    background-color: var(--extra-light);
-}
-
-.client__grid {
-    margin-top: 4rem;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 2rem;
-}
-
-.client__card {
-    padding: 2rem;
-    background-color: var(--white);
-    border-radius: 1rem;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.client__card img {
-    max-width: 80px;
-    margin: auto;
-    margin-bottom: 1rem;
-    border-radius: 100%;
-}
-
-.client__card p {
-    text-align: center;
-    color: var(--text-dark);
-}
-
-.reward__container {
+.repo__container {
     padding: 2rem;
     text-align: center;
     border-radius: 2rem;
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
 }
 
-.reward__container p {
+.repo__container p {
     margin-bottom: 1rem;
     font-weight: 600;
     color: var(--text-light);
 }
 
-.reward__container h4 {
+.repo__container h4 {
     max-width: 500px;
     margin: auto;
     margin-bottom: 1rem;
@@ -289,7 +223,7 @@ nav {
     color: var(--text-dark);
 }
 
-.reward__btn {
+.repo__btn {
     padding: 1rem 3rem;
     outline: none;
     border: none;
@@ -301,8 +235,45 @@ nav {
     transition: 0.3s;
 }
 
-.reward__btn:hover {
+.repo__btn:hover {
     background-color: var(--primary-color-dark);
+}
+
+/* CSS for results page */
+
+.results__grid {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.results__card {
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.results__content {
+    padding: 1rem;
+}
+
+.results__card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.results__card__header h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.results__content p {
+    color: var(--text-light);
 }
 
 .footer {
